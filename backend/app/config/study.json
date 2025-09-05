@@ -1,0 +1,149 @@
+{
+  "study_id": "demo-health-comms-2026",
+  "title": "Health Communication Preferences",
+  "description": "A short demo study illustrating config-driven branching, sectioning, and resumable sessions.",
+  "sections": [
+    { "id": "screener", "label": "Screener" },
+    { "id": "typing", "label": "Typing" },
+    { "id": "exposure", "label": "Message" },
+    { "id": "posttest", "label": "Reaction" },
+    { "id": "demographics", "label": "About You" }
+  ],
+  "steps": [
+    {
+      "id": "consent",
+      "section": "screener",
+      "type": "info",
+      "title": "Welcome",
+      "body": "This is a short demonstration of an adaptive workflow engine. Your responses are saved to your browser session and you can resume at any time. No personal data is collected.",
+      "continue_label": "Begin"
+    },
+    {
+      "id": "role",
+      "section": "screener",
+      "type": "single_choice",
+      "title": "Which best describes you?",
+      "required": true,
+      "options": [
+        { "value": "patient", "label": "Patient or caregiver" },
+        { "value": "clinician", "label": "Clinician" },
+        { "value": "researcher", "label": "Health researcher" },
+        { "value": "other", "label": "None of the above" }
+      ]
+    },
+    {
+      "id": "screen_out",
+      "section": "screener",
+      "type": "info",
+      "title": "Thank you",
+      "body": "This study is closed to your group. We appreciate your interest.",
+      "terminal": true,
+      "continue_label": "Close",
+      "show_if": { "role": "other" }
+    },
+    {
+      "id": "specialty",
+      "section": "screener",
+      "type": "single_choice",
+      "title": "What is your primary specialty?",
+      "required": true,
+      "show_if": { "role": "clinician" },
+      "options": [
+        { "value": "primary_care", "label": "Primary care" },
+        { "value": "cardiology", "label": "Cardiology" },
+        { "value": "psychiatry", "label": "Psychiatry" },
+        { "value": "other", "label": "Other" }
+      ]
+    },
+    {
+      "id": "trust_pretest",
+      "section": "typing",
+      "type": "scale",
+      "title": "Before we begin: how much do you trust public health messaging from federal agencies?",
+      "required": true,
+      "min": 1,
+      "max": 7,
+      "min_label": "Not at all",
+      "max_label": "Completely"
+    },
+    {
+      "id": "channels",
+      "section": "typing",
+      "type": "multi_choice",
+      "title": "Which sources do you actively use to get health information? (Select all that apply.)",
+      "required": true,
+      "min_select": 1,
+      "options": [
+        { "value": "physician", "label": "My physician" },
+        { "value": "social", "label": "Social media" },
+        { "value": "news", "label": "News outlets" },
+        { "value": "podcast", "label": "Podcasts" },
+        { "value": "search", "label": "Search engines" },
+        { "value": "agency", "label": "Government health agencies" }
+      ]
+    },
+    {
+      "id": "message",
+      "section": "exposure",
+      "type": "info",
+      "title": "Please read the following statement",
+      "body": "Annual cardiovascular screenings reduce the long-term risk of heart attack and stroke by an estimated 27% in adults over 40, according to a 2025 meta-analysis published in JAMA. Most insurers cover these screenings at no cost to the patient.",
+      "continue_label": "I have read this"
+    },
+    {
+      "id": "trust_posttest",
+      "section": "posttest",
+      "type": "scale",
+      "title": "After reading the statement, how persuasive did you find it?",
+      "required": true,
+      "min": 1,
+      "max": 7,
+      "min_label": "Not persuasive",
+      "max_label": "Very persuasive"
+    },
+    {
+      "id": "intent",
+      "section": "posttest",
+      "type": "single_choice",
+      "title": "How likely are you to discuss cardiovascular screening with your physician in the next 6 months?",
+      "required": true,
+      "options": [
+        { "value": 1, "label": "Definitely will not" },
+        { "value": 2, "label": "Probably will not" },
+        { "value": 3, "label": "Might or might not" },
+        { "value": 4, "label": "Probably will" },
+        { "value": 5, "label": "Definitely will" }
+      ]
+    },
+    {
+      "id": "feedback",
+      "section": "posttest",
+      "type": "long_text",
+      "title": "In your own words, what made the statement persuasive or unpersuasive?",
+      "required": false,
+      "placeholder": "Optional. A sentence or two is fine."
+    },
+    {
+      "id": "age",
+      "section": "demographics",
+      "type": "single_choice",
+      "title": "Age range",
+      "required": true,
+      "options": [
+        { "value": "18_29", "label": "18\u201329" },
+        { "value": "30_44", "label": "30\u201344" },
+        { "value": "45_59", "label": "45\u201359" },
+        { "value": "60_plus", "label": "60+" }
+      ]
+    },
+    {
+      "id": "complete",
+      "section": "demographics",
+      "type": "info",
+      "title": "Thank you",
+      "body": "Your responses have been recorded. You can export the raw data using the panel on the right.",
+      "terminal": true,
+      "continue_label": "Finish"
+    }
+  ]
+}
