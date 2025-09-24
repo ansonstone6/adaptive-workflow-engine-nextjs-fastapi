@@ -45,10 +45,12 @@ export default function LandingPage() {
             Start the demo
           </Link>
           <a
-            href="https://github.com"
+            href="https://github.com/ansonstone6/adaptive-workflow-engine-nextjs-fastapi"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-300 px-6 text-sm font-semibold text-zinc-700 transition-colors hover:border-zinc-500 dark:border-zinc-700 dark:text-zinc-200"
           >
-            View source
+            View source on GitHub
           </a>
         </div>
       </header>
